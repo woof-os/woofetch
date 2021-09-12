@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo -e "\033[93m╭───"
+echo -e "\033[93m│ \033[1m\033[95m$USER@$(uname -n)\033[0m"
+echo -e "\033[93m│ \033[1m\033[93mKernel                  \033[0m$(uname -s) $(uname -r)"
+echo -e "\033[93m│ \033[1m\033[93mOS                      \033[0m$(cat /etc/*release | grep -i pretty_name | awk -F "=" '{print $2}' | sed 's/"//g')"
+echo -e "\033[93m│ \033[1m\033[93mHost                    \033[0m$(uname -m)"
+echo -e "\033[93m│ \033[1m\033[93mProcessor               \033[0m$(cat /proc/cpuinfo | grep 'model name' | uniq | cut -d' ' -f3-)"
+echo -e "\033[93m│ \033[1m\033[93mMemory                  \033[0m$(cat /proc/meminfo | grep 'MemTotal' | uniq | cut -d' ' -f3- | xargs)"
+echo -e "\033[93m│ \033[1m\033[93mUptime                  \033[0m$(uptime | awk '{print $3}' | awk -F "," '{print $1}')"
+echo -e "\033[93m│ \033[1m\033[93mEditor                  \033[0m$EDITOR"
+echo -e "\033[93m│ \033[1m\033[93mBackground Colors       \033[40m  \033[41m  \033[42m  \033[43m  \033[44m  \033[45m  \033[46m  \033[47m  \033[0m"
+echo -e "\033[93m╰───"
+
